@@ -1,0 +1,15 @@
+CHIP Computer {
+
+    IN reset;
+
+    PARTS:
+    // Instruction memory (32K x 16-bit ROM)
+    ROM32K(address=pc, out=instruction);
+
+    // Central Processing Unit
+    CPU(inM=memOut, instruction=instruction, reset=reset,
+        outM=outM, writeM=writeM, addressM=addressM, pc=pc);
+
+    // Data memory (RAM16K + Screen + Keyboard)
+    Memory(in=outM, load=writeM, address=addressM, out=memOut);
+}
