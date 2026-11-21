@@ -1,0 +1,15 @@
+// Computer.hdl - the complete Hack computer (Nand to Tetris, project 5)
+// ROM32K holds the program, CPU runs it, Memory is RAM + screen + keyboard.
+
+CHIP Computer {
+
+    IN reset;
+
+    PARTS:
+    ROM32K(address=pc, out=instruction);
+
+    CPU(inM=memOut, instruction=instruction, reset=reset,
+        outM=outM, writeM=writeM, addressM=addressM, pc=pc);
+
+    Memory(in=outM, load=writeM, address=addressM, out=memOut);
+}
