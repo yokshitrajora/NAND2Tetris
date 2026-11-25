@@ -60,7 +60,7 @@
     @32
     D=A
     @addr
-    M=M+D                   // addr += 32  -> same column, next row down
+    M=D+M                   // addr += 32  -> same column, next row down
     @rows
     M=M-1
     D=M
